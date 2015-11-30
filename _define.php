@@ -16,7 +16,7 @@ $this->registerModule(
 	/* Name */			"Stop Forum Spam",
 	/* Description*/		"Stop Forum Spam filter for antispam Dotclear plugin",
 	/* Author */			"Franck Paul",
-	/* Version */			'0.1',
+	/* Version */			'0.2',
 	array(
 		'permissions' =>	'usage,contentadmin',
 		'priority' =>		200,

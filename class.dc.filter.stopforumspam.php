@@ -93,7 +93,7 @@ class stopForumSpam extends netHttp
 				}
 			}
 		}
-
-		return false;
+		// return without any value, may be a spam, may be a ham, Stop Forum Spam doesn't know
+		return;
 	}
 }
