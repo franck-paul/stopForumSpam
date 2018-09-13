@@ -72,12 +72,12 @@ class stopForumSpam extends netHttp
 
     public function comment_check($email, $ip)
     {
-        $data = array(
-//            We don't check email up to now, we will see later after some tests
-            //            'email' => $email,
-            'ip' => $ip, // Testes with '118.70.72.246' marked as spam (2015/11/28)
+        $data = [
+                         // We don't check email up to now, we will see later after some tests
+                         // 'email' => $email,
+            'ip' => $ip, // Tested with '118.70.72.246' marked as spam (2015/11/28)
             'f'  => 'json'
-        );
+        ];
 
         $this->host = $this->sfs_host;
         if (!$this->get($this->sfs_path, $data, 'UTF-8')) {
