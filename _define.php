@@ -22,6 +22,8 @@ $this->registerModule(
         'requires'    => [['core', '2.13']], // Dependencies
         'permissions' => 'usage,contentadmin',
         'priority'    => 200,
+        'details'     => 'https://open-time.net/?q=stopForumSpam',       // Details URL
+        'support'     => 'https://github.com/franck-paul/stopForumSpam', // Support URL
         'type'        => 'plugin'
     ]
 );
