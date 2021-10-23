@@ -4,7 +4,7 @@
     <version>0.3</version>
     <author>Franck Paul</author>
     <desc>Stop Forum Spam filter for antispam Dotclear plugin</desc>
-    <file>https://github.com/franck-paul/stopForumSpam/releases/download/0.3/plugin-stopForumSpam.zip</file>
+    <file>https://github.com/franck-paul/stopForumSpam/releases/download/0.3/plugin-stopForumSpam-0.3.zip</file>
     <da:dcmin>2.13</da:dcmin>
     <da:details>https://open-time.net/?q=stopForumSpam</da:details>
     <da:support>https://github.com/franck-paul/stopForumSpam</da:support>
