@@ -10,8 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 class dcFilterStopForumSpam extends dcSpamFilter
 {
@@ -19,9 +20,9 @@ class dcFilterStopForumSpam extends dcSpamFilter
     public $has_gui = false;
     public $active  = false;
 
-    public function __construct($core)
+    public function __construct($core = null)
     {
-        parent::__construct($core);
+        parent::__construct(dcCore::app());
     }
 
     protected function setInfo()
@@ -36,9 +37,7 @@ class dcFilterStopForumSpam extends dcSpamFilter
 
     private function sfsInit()
     {
-        $blog = &$this->core->blog;
-
-        return new stopForumSpam($blog->url);
+        return new stopForumSpam(dcCore::app()->blog->url);
     }
 
     public function isSpam($type, $author, $email, $site, $ip, $content, $post_id, &$status)
@@ -47,15 +46,15 @@ class dcFilterStopForumSpam extends dcSpamFilter
             return;
         }
 
-        $blog = &$this->core->blog;
-        try
-        {
+        try {
             $c = $sfs->comment_check($email, $ip);
             if ($c) {
                 $status = 'Filtered by Stop Forum Spam';
+
                 return true;
             }
-        } catch (Exception $e) {} # If http or akismet is dead, we don't need to know it
+        } catch (Exception $e) {
+        } # If http or akismet is dead, we don't need to know it
     }
 }
 
@@ -64,24 +63,26 @@ class stopForumSpam extends netHttp
     protected $sfs_host = 'api.stopforumspam.org';
     protected $sfs_path = '/api';
     protected $timeout  = 3;
+    protected $blog_url;
 
     public function __construct($blog_url)
     {
         parent::__construct($this->sfs_host, 80);
+        $this->blog_url = $blog_url;
     }
 
     public function comment_check($email, $ip)
     {
         $data = [
-                         // We don't check email up to now, we will see later after some tests
-                         // 'email' => $email,
+            // We don't check email up to now, we will see later after some tests
+            // 'email' => $email,
             'ip' => $ip, // Tested with '118.70.72.246' marked as spam (2015/11/28)
-            'f'  => 'json'
+            'f'  => 'json',
         ];
 
         $this->host = $this->sfs_host;
-        if (!$this->get($this->sfs_path, $data, 'UTF-8')) {
-            throw new Exception('HTTP error: ' . $this->getError());
+        if (!$this->get($this->sfs_path, $data)) {
+            throw new Exception('HTTP error: ' . $this->getError());    // @phpstan-ignore-line
         }
 
         $ret = $this->getContent();
@@ -95,6 +96,5 @@ class stopForumSpam extends netHttp
             }
         }
         // return without any value, may be a spam, may be a ham, Stop Forum Spam doesn't know
-        return;
     }
 }

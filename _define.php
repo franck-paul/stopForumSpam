@@ -20,13 +20,13 @@ $this->registerModule(
     'Franck Paul',                                         // Author
     '0.3',                                                 // Version
     [
-        'requires'    => [['core', '2.13']], // Dependencies
+        'requires'    => [['core', '2.23']], // Dependencies
         'permissions' => 'usage,contentadmin',
         'priority'    => 200,
         'type'        => 'plugin',
 
         'details'    => 'https://open-time.net/?q=stopForumSpam',       // Details URL
         'support'    => 'https://github.com/franck-paul/stopForumSpam', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/master/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/master/dcstore.xml',
     ]
 );
