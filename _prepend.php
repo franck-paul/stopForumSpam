@@ -15,4 +15,4 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $__autoload['dcFilterStopForumSpam'] = __DIR__ . '/class.dc.filter.stopforumspam.php';
-$core->spamfilters[]                 = 'dcFilterStopForumSpam';
+dcCore::app()->spamfilters[]         = 'dcFilterStopForumSpam';
