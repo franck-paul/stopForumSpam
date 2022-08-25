@@ -20,11 +20,6 @@ class dcFilterStopForumSpam extends dcSpamFilter
     public $has_gui = false;
     public $active  = false;
 
-    public function __construct($core = null)
-    {
-        parent::__construct(dcCore::app());
-    }
-
     protected function setInfo()
     {
         $this->description = __('Stop Forum Spam spam filter (see http://www.stopforumspam.com/)');
@@ -54,11 +49,12 @@ class dcFilterStopForumSpam extends dcSpamFilter
                 return true;
             }
         } catch (Exception $e) {
-        } # If http or akismet is dead, we don't need to know it
+            // If http or akismet is dead, we don't need to know it
+        }
     }
 }
 
-class stopForumSpam extends netHttp
+class stopForumSpam extends HttpClient
 {
     protected $sfs_host = 'api.stopforumspam.org';
     protected $sfs_path = '/api';
@@ -88,11 +84,9 @@ class stopForumSpam extends netHttp
         $ret = $this->getContent();
         if ($ret) {
             $json = json_decode($ret);
-            if ($json->success) {
+            if ($json->success && (int) $json->ip->appears > 0) {
                 // Check ip only (agressive mode)
-                if ((int) $json->ip->appears > 0) {
-                    return true;
-                }
+                return true;
             }
         }
         // return without any value, may be a spam, may be a ham, Stop Forum Spam doesn't know
