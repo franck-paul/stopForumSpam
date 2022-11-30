@@ -15,18 +15,21 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'Stop Forum Spam',                                     // Name
-    'Stop Forum Spam filter for antispam Dotclear plugin', // Description
-    'Franck Paul',                                         // Author
-    '0.3.1',
+    'Stop Forum Spam',
+    'Stop Forum Spam filter for antispam Dotclear plugin',
+    'Franck Paul',
+    '1.0',
     [
-        'requires'    => [['core', '2.23']], // Dependencies
-        'permissions' => 'usage,contentadmin',
-        'priority'    => 200,
-        'type'        => 'plugin',
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_USAGE,
+            dcAuth::PERMISSION_CONTENT_ADMIN,
+        ]),
+        'priority' => 200,
+        'type'     => 'plugin',
 
-        'details'    => 'https://open-time.net/?q=stopForumSpam',       // Details URL
-        'support'    => 'https://github.com/franck-paul/stopForumSpam', // Support URL
+        'details'    => 'https://open-time.net/?q=stopForumSpam',
+        'support'    => 'https://github.com/franck-paul/stopForumSpam',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/master/dcstore.xml',
     ]
 );

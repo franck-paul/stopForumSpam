@@ -14,5 +14,5 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-$__autoload['dcFilterStopForumSpam'] = __DIR__ . '/class.dc.filter.stopforumspam.php';
-dcCore::app()->spamfilters[]         = 'dcFilterStopForumSpam';
+Clearbricks::lib()->autoload(['dcFilterStopForumSpam' => __DIR__ . '/class.dc.filter.stopforumspam.php']);
+dcCore::app()->spamfilters[] = 'dcFilterStopForumSpam';
