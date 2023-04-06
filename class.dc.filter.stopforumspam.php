@@ -10,7 +10,10 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-class dcFilterStopForumSpam extends dcSpamFilter
+
+use Dotclear\Plugin\antispam\SpamFilter;
+
+class dcFilterStopForumSpam extends SpamFilter
 {
     public $name    = 'Stop Forum Spam';
     public $has_gui = false;
@@ -79,7 +82,7 @@ class stopForumSpam extends netHttp
 
         $ret = $this->getContent();
         if ($ret) {
-            $json = json_decode($ret);
+            $json = json_decode($ret, null, 512, JSON_THROW_ON_ERROR);
             if ($json->success && (int) $json->ip->appears > 0) {
                 // Check ip only (agressive mode)
                 return true;
