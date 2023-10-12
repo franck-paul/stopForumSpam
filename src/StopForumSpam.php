@@ -19,18 +19,33 @@ use Exception;
 
 class StopForumSpam extends HttpClient
 {
-    protected $sfs_host = 'api.stopforumspam.org';
-    protected $sfs_path = '/api';
-    protected $timeout  = 3;
-    protected $blog_url;
+    protected string $sfs_host = 'api.stopforumspam.org';
+    protected string $sfs_path = '/api';
 
-    public function __construct($blog_url)
+    /**
+     * @var        int
+     */
+    protected $timeout = 3;
+
+    protected string $blog_url;
+
+    public function __construct(string $blog_url)
     {
         parent::__construct($this->sfs_host, 80);
         $this->blog_url = $blog_url;
     }
 
-    public function comment_check($email, $ip)
+    /**
+     * Check a comment
+     *
+     * @param      mixed      $email  The email
+     * @param      string     $ip     The IP address
+     *
+     * @throws     Exception
+     *
+     * @return     bool|void
+     */
+    public function comment_check(mixed $email, string $ip)
     {
         $data = [
             // We don't check email up to now, we will see later after some tests

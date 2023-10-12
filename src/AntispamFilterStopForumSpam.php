@@ -21,18 +21,18 @@ use Exception;
 class AntispamFilterStopForumSpam extends SpamFilter
 {
     /** @var string Filter name */
-    public $name = 'Stop Forum Spam';
+    public string $name = 'Stop Forum Spam';
 
     /** @var bool Filter has settings GUI? */
-    public $has_gui = false;
+    public bool $has_gui = false;
 
     /** @var bool Is filter active? */
-    public $active = false;
+    public bool $active = false;
 
     /**
      * Sets the filter description.
      */
-    protected function setInfo()
+    protected function setInfo(): void
     {
         $this->description = __('Stop Forum Spam spam filter (see http://www.stopforumspam.com/)');
     }
@@ -47,12 +47,12 @@ class AntispamFilterStopForumSpam extends SpamFilter
      *
      * @return     string  The status message.
      */
-    public function getStatusMessage(string $status, ?int $comment_id)
+    public function getStatusMessage(string $status, ?int $comment_id): string
     {
         return sprintf(__('Filtered by %s.'), $this->guiLink());
     }
 
-    private function sfsInit()
+    private function sfsInit(): StopForumSpam
     {
         return new StopForumSpam(dcCore::app()->blog->url);
     }
@@ -76,12 +76,9 @@ class AntispamFilterStopForumSpam extends SpamFilter
      */
     public function isSpam(string $type, ?string $author, ?string $email, ?string $site, ?string $ip, ?string $content, ?int $post_id, string &$status)
     {
-        if (($sfs = $this->sfsInit()) === false) {
-            return;
-        }
-
         try {
-            $c = $sfs->comment_check($email, $ip);
+            $sfs = $this->sfsInit();
+            $c   = $sfs->comment_check($email, $ip);
             if ($c) {
                 $status = 'Filtered by Stop Forum Spam';
 
