@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\stopForumSpam;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Plugin\antispam\SpamFilter;
 use Exception;
 
@@ -54,7 +54,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
 
     private function sfsInit(): StopForumSpam
     {
-        return new StopForumSpam(dcCore::app()->blog->url);
+        return new StopForumSpam(App::blog()->url());
     }
 
     /**
@@ -78,7 +78,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
     {
         try {
             $sfs = $this->sfsInit();
-            $c   = $sfs->comment_check($email, $ip);
+            $c   = $sfs->comment_check($email, (string) $ip);
             if ($c) {
                 $status = 'Filtered by Stop Forum Spam';
 

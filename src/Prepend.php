@@ -14,7 +14,8 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\stopForumSpam;
 
-use dcCore;
+use ArrayObject;
+use Dotclear\App;
 use Dotclear\Core\Process;
 
 class Prepend extends Process
@@ -30,7 +31,11 @@ class Prepend extends Process
             return false;
         }
 
-        dcCore::app()->spamfilters[] = AntispamFilterStopForumSpam::class;
+        App::behavior()->addBehaviors([
+            'AntispamInitFilters' => function (ArrayObject $spamfilters): void {
+                $spamfilters->append(AntispamFilterStopForumSpam::class);
+            },
+        ]);
 
         return true;
     }
