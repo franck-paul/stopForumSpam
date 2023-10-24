@@ -14,7 +14,7 @@ $this->registerModule(
     'Stop Forum Spam',
     'Stop Forum Spam filter for antispam Dotclear plugin',
     'Franck Paul',
-    '4.0',
+    '5.0',
     [
         'requires'    => [['core', '2.28']],
         'permissions' => 'My',
