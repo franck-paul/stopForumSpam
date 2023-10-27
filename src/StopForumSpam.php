@@ -20,6 +20,7 @@ use Exception;
 class StopForumSpam extends HttpClient
 {
     protected string $sfs_host = 'api.stopforumspam.org';
+
     protected string $sfs_path = '/api';
 
     /**
@@ -67,6 +68,7 @@ class StopForumSpam extends HttpClient
                 return true;
             }
         }
+
         // return without any value, may be a spam, may be a ham, Stop Forum Spam doesn't know
     }
 }
