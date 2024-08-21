@@ -28,12 +28,10 @@ class StopForumSpam extends HttpClient
      */
     protected $timeout = 3;
 
-    protected string $blog_url;
-
-    public function __construct(string $blog_url)
-    {
+    public function __construct(
+        protected string $blog_url
+    ) {
         parent::__construct($this->sfs_host, 80);
-        $this->blog_url = $blog_url;
     }
 
     /**

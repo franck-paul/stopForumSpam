@@ -23,6 +23,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=stopForumSpam',
         'support'    => 'https://github.com/franck-paul/stopForumSpam',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/main/dcstore.xml',
     ]
 );
