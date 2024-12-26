@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief stopForumSpam, a plugin for Dotclear 2
  *
@@ -41,10 +42,8 @@ class StopForumSpam extends HttpClient
      * @param      string     $ip     The IP address
      *
      * @throws     Exception
-     *
-     * @return     bool|void
      */
-    public function comment_check(mixed $email, string $ip)
+    public function comment_check(mixed $email, string $ip): bool|null
     {
         $data = [
             // We don't check email up to now, we will see later after some tests
@@ -68,5 +67,6 @@ class StopForumSpam extends HttpClient
         }
 
         // return without any value, may be a spam, may be a ham, Stop Forum Spam doesn't know
+        return null;
     }
 }

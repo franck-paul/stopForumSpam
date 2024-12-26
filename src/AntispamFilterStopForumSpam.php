@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief stopForumSpam, a plugin for Dotclear 2
  *
@@ -74,7 +75,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
      * @param      int     $post_id  The comment post_id
      * @param      string  $status   The comment status
      */
-    public function isSpam(string $type, ?string $author, ?string $email, ?string $site, ?string $ip, ?string $content, ?int $post_id, string &$status)
+    public function isSpam(string $type, ?string $author, ?string $email, ?string $site, ?string $ip, ?string $content, ?int $post_id, string &$status): bool|null
     {
         try {
             $sfs = $this->sfsInit();
@@ -87,5 +88,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
         } catch (Exception) {
             // If http or akismet is dead, we don't need to know it
         }
+
+        return null;
     }
 }
