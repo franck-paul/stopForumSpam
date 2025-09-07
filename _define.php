@@ -18,7 +18,7 @@ $this->registerModule(
     '5.2',
     [
         'date'        => '2003-08-13T13:42:00+0100',
-        'requires'    => [['core', '2.28']],
+        'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'priority'    => 200,
         'type'        => 'plugin',
@@ -26,5 +26,6 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=stopForumSpam',
         'support'    => 'https://github.com/franck-paul/stopForumSpam',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/stopForumSpam/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );
