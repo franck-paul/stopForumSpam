@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="stopForumSpam">
     <name>Stop Forum Spam</name>
-    <version>6.0</version>
+    <version>6.1</version>
     <author>Franck Paul</author>
     <desc>Stop Forum Spam filter for antispam Dotclear plugin</desc>
-    <date>2025-09-07T15:45:42+0200</date>
-    <file>https://github.com/franck-paul/stopForumSpam/releases/download/6.0/plugin-stopForumSpam-6.0.zip</file>
+    <date>2026-02-26T19:16:52+0100</date>
+    <file>https://github.com/franck-paul/stopForumSpam/releases/download/6.1/plugin-stopForumSpam-6.1.zip</file>
     <da:dcmin>2.36</da:dcmin>
     <da:details>https://dotclear.org/plugin/detail/stopForumSpam</da:details>
     <da:support>https://github.com/franck-paul/stopForumSpam</da:support>
