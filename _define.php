@@ -15,9 +15,9 @@ $this->registerModule(
     'Stop Forum Spam',
     'Stop Forum Spam filter for antispam Dotclear plugin',
     'Franck Paul',
-    '6.1',
+    '6.2',
     [
-        'date'        => '2026-02-26T19:16:52+0100',
+        'date'        => '2026-02-26T19:23:03+0100',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'priority'    => 200,
