@@ -17,7 +17,6 @@ namespace Dotclear\Plugin\stopForumSpam;
 
 use Dotclear\Helper\Network\HttpClient;
 use Exception;
-use stdClass;
 
 class StopForumSpam extends HttpClient
 {
@@ -62,27 +61,6 @@ class StopForumSpam extends HttpClient
         if ($ret) {
             $json = json_decode($ret, null, 512, JSON_THROW_ON_ERROR);
             if ($json->success && (int) $json->ip->appears > 0) {   // @phpstan-ignore-line don't bother with response structure here
-                // Unable to get a correct JSON response
-                return null;
-            }
-
-            if (!$json->success) {
-                // Unable to get a successful response
-                return null;
-            }
-
-            if (!property_exists($json, 'ip')) {
-                // Unable to get info on spam/not spam of given IP
-                return null;
-            }
-
-            /**
-             * @var stdClass
-             */
-            $ip      = $json->ip;
-            $appears = property_exists($ip, 'appears') && is_numeric($ip->appears) ? $ip->appears : 0;
-            if ($appears > 0) {
-                // Check ip only (agressive mode)
                 return true;
             }
         }
