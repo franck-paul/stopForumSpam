@@ -60,6 +60,9 @@ class StopForumSpam extends HttpClient
         $ret = $this->getContent();
         if ($ret) {
             $json = json_decode($ret, null, 512, JSON_THROW_ON_ERROR);
+
+            // No need to check about response structure as this method is called inside a try catch
+
             if ($json->success && (int) $json->ip->appears > 0) {   // @phpstan-ignore-line don't bother with response structure here
                 return true;
             }

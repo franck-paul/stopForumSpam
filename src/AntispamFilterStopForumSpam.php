@@ -86,7 +86,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
                 return true;
             }
         } catch (Exception) {
-            // If http or akismet is dead, we don't need to know it
+            // If http or stop forum spam is dead, we don't need to know it
         }
 
         return null;
