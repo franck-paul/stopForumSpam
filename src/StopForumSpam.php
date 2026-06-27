@@ -63,7 +63,7 @@ class StopForumSpam extends HttpClient
 
             // No need to check about response structure as this method is called inside a try catch
 
-            if ($json->success && (int) $json->ip->appears > 0) {   // @phpstan-ignore-line don't bother with response structure here
+            if ($json->success && (int) $json->ip->appears > 0) {   // @phpstan-ignore property.nonObject, cast.int, property.nonObject, property.nonObject (don't bother with response structure here)
                 return true;
             }
         }
