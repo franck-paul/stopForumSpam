@@ -35,8 +35,8 @@ class Prepend
         }
 
         App::behavior()->addBehaviors([
-            'AntispamInitFilters' => static function (ArrayObject $spamfilters): void {
-                $spamfilters->append(AntispamFilterStopForumSpam::class);
+            'AntispamInitFilters' => static function (ArrayObject $arrayObject): void {
+                $arrayObject->append(AntispamFilterStopForumSpam::class);
             },
         ]);
 
