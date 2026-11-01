@@ -80,7 +80,7 @@ class AntispamFilterStopForumSpam extends SpamFilter
         try {
             $sfs = $this->sfsInit();
             $c   = $sfs->comment_check($email, (string) $ip);
-            if ($c) {
+            if ($c === true) {
                 $status = 'Filtered by Stop Forum Spam';
 
                 return true;

@@ -58,7 +58,7 @@ class StopForumSpam extends HttpClient
         }
 
         $ret = $this->getContent();
-        if ($ret) {
+        if ($ret !== '') {
             $json = json_decode($ret, null, 512, JSON_THROW_ON_ERROR);
 
             // No need to check about response structure as this method is called inside a try catch
