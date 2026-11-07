@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'Stop Forum Spam',
         'Stop Forum Spam filter for antispam Dotclear plugin',
         'Franck Paul',
-        '6.3',
+        '6.4',
         [
-            'date'        => '2026-08-03T10:12:08+0200',
+            'date'        => '2026-11-07T17:07:10+0100',
             'requires'    => [['core', '2.36']],
             'permissions' => 'My',
             'priority'    => 200,
